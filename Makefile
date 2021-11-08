@@ -12,6 +12,7 @@ init:
 	docker-compose exec app php artisan key:generate
 	docker-compose exec app php artisan storage:link
 	docker-compose exec app chmod -R 777 storage/
+	docker-compose exec app chown www-data storage/ -R
 	docker-compose exec app php artisan migrate:fresh
 remake:
 	@make stop
