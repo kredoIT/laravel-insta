@@ -5,18 +5,18 @@
                 @if ($post->user->avatar)
                     <img src="{{ App\Models\User::showAvatar($post->user->avatar) }}" class="border rounded-circle mb-2" style="height: 2.4rem; width: 2.4rem; " /> 
                 @else
-                    <i class="far fa-user-circle fa-3x"></i>
+                    <i class="far fa-user-circle" style="font-size: 2.4rem;"></i>
                 @endif
             </a>
         </div>
-        <div class="col-4 ps-1 pt-3">
+        <div class="col-4 pt-2" style="padding-left: .1rem;">
             <a 
                 href="{{ route('profile.show', $post->user->id) }}" 
                 class="text-body" 
                 style="text-decoration: none !important;"
             ><h6>{{ $post->user->name }}</h6></a>
         </div>
-        <div class="col-7 pe-4 pt-1 text-end">
+        <div class="col-7 pe-3 pt-1 text-end">
             @if (Auth::user()->id === $post->user->id)
                 <div class="dropdown">
                     <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
