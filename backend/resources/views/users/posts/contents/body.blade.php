@@ -34,7 +34,7 @@
 <div class="mb-4 ms-4">
     <div class="row mb-2">
         <div class="col-12">
-            <strong>{{ $post->user->name }}</strong> {{ $post->description }}
+            <strong>{{ $post->user->name }}</strong> <span class="fw-light">{{ $post->description }}</span>
         </div>
     </div>
 </div>

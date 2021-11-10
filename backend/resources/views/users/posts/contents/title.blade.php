@@ -1,16 +1,22 @@
 <div class="card-title m-1">
     <div class="row">
         <div class="col-1 ps-4">
-            @if ($post->user->avatar)
-            <img src="{{ App\Models\User::showAvatar($post->user->avatar) }}" class="border rounded-circle" style="height: 100%; width: 160%;" /> 
-            @else
-            <i class="far fa-user-circle fa-3x"></i>
-            @endif
+            <a href="{{ route('profile.show', $post->user->id) }}" class="text-black-50">
+                @if ($post->user->avatar)
+                    <img src="{{ App\Models\User::showAvatar($post->user->avatar) }}" class="border rounded-circle mb-2" style="height: 2.4rem; width: 2.4rem; " /> 
+                @else
+                    <i class="far fa-user-circle fa-3x"></i>
+                @endif
+            </a>
         </div>
-        <div class="col-4 ps-2 pt-3">
-            <h6>{{ $post->user->name }}</h6>
+        <div class="col-4 ps-1 pt-3">
+            <a 
+                href="{{ route('profile.show', $post->user->id) }}" 
+                class="text-body" 
+                style="text-decoration: none !important;"
+            ><h6>{{ $post->user->name }}</h6></a>
         </div>
-        <div class="col-7 pe-4 pt-2 text-end">
+        <div class="col-7 pe-4 pt-1 text-end">
             @if (Auth::user()->id === $post->user->id)
                 <div class="dropdown">
                     <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">

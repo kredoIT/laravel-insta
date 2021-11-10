@@ -30,3 +30,5 @@ destroy-volumes:
 	docker-compose down --volumes
 ps:
 	docker-compose ps
+seed:
+	docker-compose exec app php artisan db:seed

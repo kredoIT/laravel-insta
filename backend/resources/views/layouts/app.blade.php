@@ -18,16 +18,16 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand mt-2" href="{{ url('/') }}">
                 <h5>{{ config('app.name') }}</h5>
             </a>
 
             <div class="collapse navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <div class="collapse navbar-collapse justify-content-md-center">
+                <div class="collapse navbar-collapse">
                     @auth
                         @if(!request()->is('admin/*'))
-                        <form class="row align-items-center" action="{{ route('index') }}" style="width: 50%;">
+                        <form class="row align-items-center" action="{{ route('index') }}" style="width:35%; display: block; margin-left: auto; margin-right: auto;">
                             <div class="input-group">
                                 <input name="search" type="text" class="form-control form-control-sm" placeholder="Search" value="{{ $search ?? '' }}" />
                                 <button type="submit" class="btn btn-secondary btn-sm"><i class="fas fa-search"></i></button>

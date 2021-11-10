@@ -7,7 +7,7 @@
 @if ($users->isNotEmpty())
     <table class="table table-hover table-striped align-middle">
         <thead>
-            <th>ID</th>
+            <th>#</th>
             <th></th>
             <th>Name</th>
             <th>Email</th>
@@ -18,7 +18,7 @@
         <tbody>
             @foreach($users as $user)
             <tr>
-                <td>{{ $user->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>
                     @if ($user->avatar)
                         <img src="{{ App\Models\User::showAvatar($user->avatar) }}" class="rounded border border-1 rounded-circle " alt="..." style="height: 2.8rem; width: 3rem; " /> 

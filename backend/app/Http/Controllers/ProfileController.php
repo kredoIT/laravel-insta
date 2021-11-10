@@ -43,8 +43,6 @@ class ProfileController extends Controller
      */
 	public function show($id)
 	{
-        if ($id != Auth::user()->id && Auth::user()->role_id !== User::ADMIN_ROLE_ID) { abort(403); }
-
 		$user = $this->user->withTrashed()->findOrFail($id);
 
 		return view('users.profile.show')->with('user', $user);
@@ -59,7 +57,7 @@ class ProfileController extends Controller
      */
 	public function edit($id)
 	{
-        if ($id != Auth::user()->id && Auth::user()->role_id !== User::ADMIN_ROLE_ID) { abort(403); }
+        if ($id != Auth::user()->id) { return redirect()->route('profile.show', $id); }
 
 		$user = $this->user->withTrashed()->findOrFail($id);
 

@@ -15,9 +15,26 @@
 	<div class="col-6 pt-3">
 		<div class="row">
 			<div class="col-12 mt-2">
-				<span class="fw-bold fs-5">{{ $user->name }}</span>
-				<a href="{{ route('profile.edit', $user->id) }}" class="btn btn-primary btn-sm btn-block mb-2 ms-3">Edit Profile</a>
-				
+				<form 
+					method="post" 
+					action="{{ !\App\Models\Follow::isFollowed(Auth::user()->id, $user->id) ? route('follow.store', $user->id) : route('follow.destroy', $user->id) }}"
+				>
+					<span class="fw-bold fs-5">{{ $user->name }}</span>
+					
+					@if (Auth::user()->id === $user->id)
+						<a href="{{ route('profile.edit', $user->id) }}" class="btn btn-primary btn-sm btn-block mb-1 ms-3">Edit Profile</a>
+					@else
+						@if (!\App\Models\Follow::isFollowed(Auth::user()->id, $user->id))
+							@csrf
+							<button type="submit" class="btn btn-outline-secondary btn-sm btn-block mb-1 ms-3">Follow</button>
+						@else
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn btn-secondary btn-sm mb-1 ms-3">Unfollow</button>
+						@endif
+					@endif
+				</form>
+
 				<p>
 					<span class="pe-2">
 						<strong>{{ $user->posts()->count() }}</strong> posts
