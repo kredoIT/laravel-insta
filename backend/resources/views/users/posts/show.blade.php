@@ -5,20 +5,17 @@
 @section('content')
 
 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 ">
-	<div class="col-6 pt-4 pb-4 border bg-dark rounded-start position-relative" >
-		<img src="{{ App\Models\Post::showImage($post->image) }}" class="img-fluid"/>
+	<div class="col-6 pt-5 pb-5 border bg-dark rounded-start ">
+		<img src="{{ App\Models\Post::showImage($post->image) }}" class="card-img mt-5 mb-5"/>
 	</div>
 
-	<div class="col-6 pt-2 ps-2 pe-2">
+	<div class="col-6 pt-3 ps-3 pe-3">
 		<div class="row mb-2">
 			<div class="col-md-1">
 			<i class="far fa-user-circle text-muted" style="font-size: 2.4rem; "></i>	
 			</div>
-			<div class="col-md-10" style="padding-left: 0.6em;">
-				<div class="mb-1">
+			<div class="col-md-10 mb-1">
 				<strong>{{ $post->user->name }}</strong> &nbsp; <span class="fw-light">{{ $post->description }}</span>
-				</div>
-
 			</div>
 		</div>
 		<div class="mb-5">
@@ -41,7 +38,7 @@
 		                        @foreach($comments->sortByDesc('id') as $comment)
 		                        <li class="list-group-item" style="padding: 0.5rem 0.3em;">
 		                            <div class="row">
-		                                <div class="col-md-1">
+		                                <div class="col-md-1 ps-3">
 		                                    @if ($comment->user->avatar)
 		                                        <img 
 		                                        	src="{{ App\Models\User::showAvatar($comment->user->avatar) }}" 
@@ -52,7 +49,7 @@
 		                                        <i class="far fa-user-circle text-muted" style="font-size: 2.4rem; "></i>
 		                                    @endif  
 		                                </div>
-		                                <div class="col-md-10" style="padding-left: 0.6em;">
+		                                <div class="col-md-10 ps-3">
 											<div class="mb-1">
 												<strong>{{ $comment->user->name }}</strong> <span class="text-muted">{{ date("D, M d Y", strtotime($comment->created_at) ) }}</span>
 											</div>

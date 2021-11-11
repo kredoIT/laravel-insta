@@ -24,10 +24,10 @@
 
             <div class="collapse navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse justify-content-center">
                     @auth
                         @if(!request()->is('admin/*'))
-                        <form class="row align-items-center" action="{{ route('index') }}" style="width:35%; display: block; margin-left: auto; margin-right: auto;">
+                        <form class="row align-items-center" action="{{ route('index') }}" style="width:35%;">
                             <div class="input-group">
                                 <input name="search" type="text" class="form-control form-control-sm" placeholder="Search" value="{{ $search ?? '' }}" />
                                 <button type="submit" class="btn btn-secondary btn-sm"><i class="fas fa-search"></i></button>
