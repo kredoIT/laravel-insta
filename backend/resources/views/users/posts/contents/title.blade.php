@@ -5,7 +5,7 @@
                 @if ($post->user->avatar)
                     <img src="{{ App\Models\User::showAvatar($post->user->avatar) }}" class="border rounded-circle mb-2" style="height: 2.4rem; width: 2.4rem; " /> 
                 @else
-                    <i class="far fa-user-circle" style="font-size: 2.4rem;"></i>
+                    <i class="far fa-user-circle" style="font-size: 2.3rem;"></i>
                 @endif
             </a>
         </div>

@@ -23,12 +23,12 @@
                             <div class="row">
                                 <div class="col-xs-3 col-md-1">
                                     @if ($comment->user->avatar)
-                                        <img src="{{ App\Models\User::showAvatar($comment->user->avatar) }}" class="border rounded-circle me-3" style="height: 3rem; width: 3rem;" /> 
+                                        <img src="{{ App\Models\User::showAvatar($comment->user->avatar) }}" class="border rounded-circle me-3" style="height: 2.4rem; width: 2.4rem;" /> 
                                     @else
-                                        <i class="far fa-user-circle fa-3x text-muted"></i>
+                                        <i class="far fa-user-circle text-muted" style="font-size: 2.4rem;"></i>
                                     @endif  
                                 </div>
-                                <div class="col-xs-9 col-md-10">
+                                <div class="col-xs-9 col-md-10" style="padding-left: .2rem;">
                                     <div>
                                         <div class="mb-2">
                                             <strong>{{ $comment->user->name }}</strong> <span class="text-muted">{{ date("D, M d Y", strtotime($comment->created_at) ) }}</span>
