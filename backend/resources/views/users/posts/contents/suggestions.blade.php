@@ -5,7 +5,7 @@
         <div class="col-4 text-end">
             <a href="{{ route('profile.show', $user->id) }}" class="text-black-50">
                 @if ($user->avatar)
-                <img src="{{ App\Models\User::showAvatar($user->avatar) }}" class="border rounded-circle" style="height: 2.4rem; width: 2.4rem; " /> 
+                <img src="{{ asset('/storage/avatars/' . $user->avatar) }}" class="border rounded-circle" style="height: 2.4rem; width: 2.4rem; " /> 
                 @else
                 <i class="far fa-user-circle" style="font-size: 2.4rem;"></i>
                 @endif

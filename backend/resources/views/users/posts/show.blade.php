@@ -6,7 +6,7 @@
 
 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 ">
 	<div class="col-6 pt-5 pb-5 border bg-dark rounded-start ">
-		<img src="{{ App\Models\Post::showImage($post->image) }}" class="card-img mt-5 mb-5"/>
+		<img src="{{ asset('/storage/images/' . $post->image) }}" class="card-img mt-5 mb-5"/>
 	</div>
 
 	<div class="col-6 pt-3 ps-3 pe-3">
@@ -21,7 +21,6 @@
 		<div class="mb-5">
 			@foreach($post->categoryPost as $categoryPost)
 	        <div class="badge bg-secondary text-wrap" style="width: 6;">
-				
 	            {{ $categoryPost->category->name }}
 	        </div>
 	        @endforeach
@@ -41,7 +40,7 @@
 		                                <div class="col-md-1 ps-3">
 		                                    @if ($comment->user->avatar)
 		                                        <img 
-		                                        	src="{{ App\Models\User::showAvatar($comment->user->avatar) }}" 
+		                                        	src="{{ asset('/storage/avatars/' . $comment->user->avatar) }}" 
 		                                        	class="rounded border border-1 rounded-circle" 
 													style="height: 2.4rem; width: 2.4rem; "
 		                                        /> 

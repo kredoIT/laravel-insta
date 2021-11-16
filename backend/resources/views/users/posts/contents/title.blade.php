@@ -3,7 +3,7 @@
         <div class="col-1 ps-4 pt-1">
             <a href="{{ route('profile.show', $post->user->id) }}" class="text-black-50">
                 @if ($post->user->avatar)
-                    <img src="{{ App\Models\User::showAvatar($post->user->avatar) }}" class="border rounded-circle mb-2" style="height: 2.4rem; width: 2.4rem; " /> 
+                    <img src="{{ asset('/storage/avatars/' . $post->user->avatar) }}" class="border rounded-circle mb-2" style="height: 2.4rem; width: 2.4rem; " /> 
                 @else
                     <i class="far fa-user-circle" style="font-size: 2.3rem;"></i>
                 @endif
@@ -32,17 +32,19 @@
                     </ul>
                 </div>
             @else
-                @if (!\App\Models\Follow::isFollowed(Auth::user()->id, $post->user->id))
-                    <form method="post" action="{{ route('follow.store', $post->user->id) }}">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-secondary btn-sm">Follow</button>
-                    </form>
-                @else
-                    <form method="post" action="{{ route('follow.destroy', $post->user->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-secondary btn-sm">Unfollow</button>
-                    </form>
+                @if ($post->user->role_id === App\Models\User::USER_ROLE_ID)
+                    @if (!\App\Models\Follow::isFollowed(Auth::user()->id, $post->user->id))
+                        <form method="post" action="{{ route('follow.store', $post->user->id) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-secondary btn-sm">Follow</button>
+                        </form>
+                    @else
+                        <form method="post" action="{{ route('follow.destroy', $post->user->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-secondary btn-sm">Unfollow</button>
+                        </form>
+                    @endif
                 @endif
             @endif
         </div>

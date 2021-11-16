@@ -21,8 +21,6 @@ class User extends Authenticatable
     const ADMIN_ROLE_ID = 1;
     const USER_ROLE_ID = 2;
 
-    const S3_AVATAR_FOLDER  = 'avatars/';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -106,21 +104,5 @@ class User extends Authenticatable
                 ->where('users.role_id', self::USER_ROLE_ID)
                 ->where('users.id', '!=', $authId)
                 ->get();
-    }
-
-    /**
-     * Show avatar that is fetched from the local / S3 server
-     *
-     * @param String $image
-     * @return String
-     */
-    public static function showAvatar($image)
-    {
-        return config('app.env') === 'local'
-                ? asset('/storage/avatars/' . $image) 
-                : Storage::disk('s3')->temporaryUrl(
-                    self::S3_AVATAR_FOLDER . $image,
-                    now()->addMinutes(10)
-                );
     }
 }

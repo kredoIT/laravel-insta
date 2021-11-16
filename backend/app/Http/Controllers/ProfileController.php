@@ -13,11 +13,6 @@ use App\Models\Follow;
 class ProfileController extends Controller
 {
     const LOCAL_STORAGE_FOLDER  = 'public/avatars/';
-    const S3_AVATAR_FOLDER      = 'avatars/';
-
-    const LOCAL_DISK        = 'local';
-    const S3_DISK           = 's3';
-
     /**
      * The User model instance.
      */
@@ -105,12 +100,10 @@ class ProfileController extends Controller
     private function saveImage($request, $avatar = null)
     {
         # rename the image to remove the risk of overwriting 
-        $name   = time().'.'.$request->avatar->extension();
-        $disk   = config('app.env') !== 'local' ? self::S3_DISK : '';
-        $folder = config('app.env') !== 'local' ? self::S3_AVATAR_FOLDER : self::LOCAL_STORAGE_FOLDER;
+        $name   = time() . '.' . $request->avatar->extension();
 
         # put into public to be accessible
-        $request->avatar->storeAs($folder, $name, $disk);
+        $request->avatar->storeAs(self::LOCAL_STORAGE_FOLDER, $name);
         
         # check if has existing avatar saved in db && in storage
         if ($avatar) { $this->deleteAvatar($avatar); }
@@ -126,16 +119,10 @@ class ProfileController extends Controller
      */
     private function deleteAvatar($avatar)
     {
-        $folder = config('app.env') === 'local' 
-                ? self::LOCAL_STORAGE_FOLDER
-                : self::S3_AVATAR_FOLDER;
+        $imgPath = self::LOCAL_STORAGE_FOLDER . $avatar;
 
-        $disk   = config('app.env') === 'local' 
-                ? self::LOCAL_DISK 
-                : self::S3_DISK;
-
-        if (Storage::disk($disk)->exists($folder . $avatar)) {
-            Storage::disk($disk)->delete($folder . $avatar);
+        if (Storage::disk('local')->exists($imgPath)) {
+            Storage::disk('local')->delete($imgPath);
         }
     }
 }

@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col-3">
 		@if ($user->avatar)
-        <img src="{{ App\Models\User::showAvatar($user->avatar) }}" class="img-thumbnail mb-3" /> 
+        <img src="{{ asset('/storage/avatars/' . $user->avatar) }}" class="img-thumbnail mb-3" /> 
         @else
         <i class="far fa-user-circle fa-10x mt-3 ms-5"></i>
         @endif
@@ -61,7 +61,7 @@
 		<a href="{{ route('post.show', $post->id) }}">
 			<div class="col">
 				<div class="card card-cover h-100 overflow-hidden shadow-md">
-					<img src="{{ App\Models\Post::showImage($post->image) }}" class="rounded rounded-5 "/>
+					<img src="{{ asset('/storage/images/' . $post->image)  }}" class="rounded rounded-5 "/>
 				</div>
 			</div>
 		</a>

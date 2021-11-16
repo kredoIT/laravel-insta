@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="col-3">
 				@if (Auth::user()->avatar)
-		        <img src="{{ App\Models\User::showAvatar($user->avatar) }}" class="img-thumbnail"/> 
+		        <img src="{{ asset('/storage/avatars/' . $user->avatar) }}" class="img-thumbnail"/> 
 		        @else
 		        <i class="far fa-user-circle fa-10x mt-5 pt-4 ms-5"></i>
 		        @endif

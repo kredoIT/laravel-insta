@@ -64,7 +64,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 @if (Auth::user()->avatar)
-                                <img src="{{ App\Models\User::showAvatar(Auth::user()->avatar) }}" class="rounded border border-1 rounded-circle" style="height: 2.1rem; width: 2.18rem; "/> 
+                                <img src="{{ asset('/storage/avatars/' . Auth::user()->avatar) }}" class="rounded border border-1 rounded-circle" style="height: 2.1rem; width: 2.18rem; "/> 
                                 @else
                                 <i class="far fa-user-circle fa-2x"></i>
                                 @endif

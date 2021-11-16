@@ -22,7 +22,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                     @if ($post->image)
-                        <img src="{{ App\Models\Post::showImage($post->image) }}" class="rounded border border-1  img-thumbnail" alt="..." style="height: 10rem; width: 15rem; " /> 
+                        <img src="{{ asset('/storage/images/' . $post->image) }}" class="rounded border border-1  img-thumbnail" alt="..." style="height: 10rem; width: 15rem; " /> 
                     @else
                         <i class="fas fa-image"></i>
                     @endif

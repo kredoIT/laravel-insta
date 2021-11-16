@@ -1,5 +1,5 @@
 <a href="{{ route('post.show', $post->id) }}">
-    <img src="{{ App\Models\Post::showImage($post->image) }}" class="card-img rounded-0" />
+    <img src="{{ asset('/storage/images/' . $post->image) }}" class="card-img rounded-0" />
 </a>
 <!-- [end] post image !-->
 

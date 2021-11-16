@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-xs-3 col-md-1">
                                     @if ($comment->user->avatar)
-                                        <img src="{{ App\Models\User::showAvatar($comment->user->avatar) }}" class="border rounded-circle me-3" style="height: 2.4rem; width: 2.4rem;" /> 
+                                        <img src="{{ asset('/storage/avatars/' . $comment->user->avatar) }}" class="border rounded-circle me-3" style="height: 2.4rem; width: 2.4rem;" /> 
                                     @else
                                         <i class="far fa-user-circle text-muted" style="font-size: 2.3rem;"></i>
                                     @endif  

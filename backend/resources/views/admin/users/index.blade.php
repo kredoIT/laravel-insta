@@ -21,7 +21,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                     @if ($user->avatar)
-                        <img src="{{ App\Models\User::showAvatar($user->avatar) }}" class="rounded border border-1 rounded-circle " alt="..." style="height: 2.8rem; width: 3rem; " /> 
+                        <img src="{{ asset('/storage/avatars/' . $user->avatar) }}" class="rounded border border-1 rounded-circle " alt="..." style="height: 2.8rem; width: 3rem; " /> 
                     @else
                         <i class="far fa-user-circle fa-3x"></i>
                     @endif
