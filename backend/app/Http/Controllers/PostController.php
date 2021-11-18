@@ -155,7 +155,7 @@ class PostController extends Controller
 
 		$this->categoryPost->insert($categories);
 
-		return redirect()->route('index');
+		return redirect()->route('post.show', $post->id);
 	}
 
 	/**

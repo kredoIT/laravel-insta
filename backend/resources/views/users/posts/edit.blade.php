@@ -45,7 +45,9 @@
 	</div>
 
 	<div class="mb-3">
-		<input name="image" type="file" class="form-control" />
+		<div class="col-6">
+			<input name="image" type="file" class="form-control" />
+		</div>
 
 		@error('image')
 			<p class="text-danger">{{ $message }}</p>
