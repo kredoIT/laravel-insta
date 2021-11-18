@@ -12,18 +12,31 @@
 	<div class="col-6 pt-3 ps-3 pe-3">
 		<div class="row mb-2">
 			<div class="col-md-1">
-			<i class="far fa-user-circle text-muted" style="font-size: 2.4rem; "></i>	
+			@if ($post->user->avatar)
+				<img 
+	            	src="{{ asset('/storage/avatars/' . $post->user->avatar) }}" 
+	            	class="rounded border border-1 rounded-circle" 
+					style="height: 2.4rem; width: 2.4rem; "
+	            /> 
+			@else
+				<i class="far fa-user-circle text-muted" style="font-size: 2.4rem; "></i>
+			@endif	
 			</div>
 			<div class="col-md-10 mb-1">
 				<strong>{{ $post->user->name }}</strong> &nbsp; <span class="fw-light">{{ $post->description }}</span>
 			</div>
 		</div>
-		<div class="mb-5">
-			@foreach($post->categoryPost as $categoryPost)
-	        <div class="badge bg-secondary text-wrap" style="width: 6;">
-	            {{ $categoryPost->category->name }}
-	        </div>
-	        @endforeach
+		<div class="row mb-5">
+			<div class="col-10">
+				@foreach($post->categoryPost as $categoryPost)
+		        <div class="badge bg-secondary text-wrap mb-1" style="width: 6;">
+		            {{ $categoryPost->category->name }}
+		        </div>
+		        @endforeach
+	    	</div>
+	    	<div class="col-2 text-end">
+	    		<a href="{{ route('post.edit', $post->id) }}">Edit</a>
+	    	</div>
 		</div>
 
 		<div class="mb-3">
