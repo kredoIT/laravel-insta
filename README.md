@@ -78,7 +78,7 @@ RUN chmod 644 /etc/mysql/conf.d/my.cnf
 1. mkdir -p ./docker/php/bash/psysh
 2. touch ./docker/php/bash/.bash_history
 3. cp .env.template .env
-4. winpty docker-compose build --no-cache --force-rm
+4. winpty docker-compose build
 5. winpty docker-compose up -d
 7. cp backend/.env.example backend/.env
 8. winpty docker-compose exec app composer install
@@ -96,8 +96,10 @@ DB_PASSWORD=password
 
 
 10. winpty docker-compose exec app php artisan config:cache
-11. winpty docker-compose exec app chown www-data storage/ -R
-12. winpty docker-compose exec app php artisan migrate
+11. winpty docker-compose exec app php artisan storage:link
+12. winpty docker-compose exec app chown www-data storage/ -R
+13. winpty docker-compose exec app php artisan migrate
+14. winpty docker-compose exec app php artisan db:seed
 ```
 
 #### executables
