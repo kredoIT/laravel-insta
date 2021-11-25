@@ -32,19 +32,17 @@
                     </ul>
                 </div>
             @else
-                @if ($post->user->role_id === App\Models\User::USER_ROLE_ID)
-                    @if (!\App\Models\Follow::isFollowed(Auth::user()->id, $post->user->id))
-                        <form method="post" action="{{ route('follow.store', $post->user->id) }}">
-                            @csrf
-                            <button type="submit" class="btn btn-outline-secondary btn-sm">Follow</button>
-                        </form>
-                    @else
-                        <form method="post" action="{{ route('follow.destroy', $post->user->id) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-secondary btn-sm">Unfollow</button>
-                        </form>
-                    @endif
+                @if (!\App\Models\Follow::isFollowed(Auth::user()->id, $post->user->id))
+                    <form method="post" action="{{ route('follow.store', $post->user->id) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-secondary btn-sm">Follow</button>
+                    </form>
+                @else
+                    <form method="post" action="{{ route('follow.destroy', $post->user->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-secondary btn-sm">Unfollow</button>
+                    </form>
                 @endif
             @endif
         </div>
