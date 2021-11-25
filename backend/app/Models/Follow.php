@@ -35,6 +35,6 @@ class Follow extends Model
      **/
     public static function isFollowed($userId, $followedId)
     {
-        return Follow::where('followed_id', $userId)->where('following_id', $followedId)->exists();
+        return Follow::where('followed_id', $followedId)->where('following_id', $userId)->exists();
     }
 }
