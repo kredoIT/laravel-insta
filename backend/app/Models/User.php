@@ -98,10 +98,9 @@ class User extends Authenticatable
                 ])
                 ->whereNotIn('users.id', function($query) use ($authId) {
                     $query->from('follows')
-                        ->select(['follows.following_id'])
-                        ->where('followed_id', $authId);
+                        ->select(['follows.followed_id'])
+                        ->where('following_id', $authId);
                 })
-                ->where('users.role_id', self::USER_ROLE_ID)
                 ->where('users.id', '!=', $authId)
                 ->get();
     }
