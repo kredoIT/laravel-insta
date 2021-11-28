@@ -4,11 +4,6 @@
 
 @section('content')
 <div class="row justify-content-center ms-5">
-    <div class="col-2 order-md-last">
-        @include('users.posts.contents.suggestions', ['suggestedUsers', $suggestedUsers])
-    </div>
-    <!-- [end] suggestion list !-->
-
     <div class="col-9">
         @if ($posts->isNotEmpty())
             @foreach($posts as $post)
@@ -28,6 +23,12 @@
             @endforeach
         @endif
     </div>
+    <!-- [end] post list !-->    
+
+    <div class="col-2 order-md-last">
+        @include('users.posts.contents.suggestions', ['suggestedUsers', $suggestedUsers])
+    </div>
+    <!-- [end] users suggestion list !-->
 </div>
 
 @endsection
